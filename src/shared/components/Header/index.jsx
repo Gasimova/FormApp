@@ -11,7 +11,7 @@ export const Header = () => {
                 <NavbarBrand href="/">
                     <img
                         alt="logo"
-                        src="/logo-white.svg"
+                        src="https://cdn.wallpapersafari.com/98/19/HOSvek.png"
                         style={{
                             height: 40,
                             width: 40
