@@ -4,11 +4,14 @@ import App from './App.jsx'
 import './style/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import { GlobalProvider } from './shared/store/globalProvider.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <GlobalProvider>
+        <App />
+      </GlobalProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

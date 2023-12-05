@@ -1,6 +1,10 @@
-import { Navbar, NavbarBrand } from "reactstrap"
+import { Badge, Navbar, NavbarBrand } from "reactstrap"
+import { useGloablProvider } from "../../store/globalProvider"
 
 export const Header = () => {
+
+    const { state } = useGloablProvider()
+
     return (
         <>
             <Navbar
@@ -9,15 +13,16 @@ export const Header = () => {
                 dark
             >
                 <NavbarBrand href="/">
-                    <img
+                    <span style={{marginRight:10}}>Blog App</span>
+                    {/* <img
                         alt="logo"
                         src="https://cdn.wallpapersafari.com/98/19/HOSvek.png"
                         style={{
                             height: 40,
                             width: 40
                         }}
-                    />
-                    Reactstrap
+                    /> */}
+                   <Badge color="warning">{state.posts.length}</Badge>
                 </NavbarBrand>
             </Navbar>
         </>

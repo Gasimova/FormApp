@@ -1,9 +1,9 @@
-import { EditOutlined, EllipsisOutlined, EyeOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 const { Meta } = Card;
-export const CardBox = ({title, body, id, onClick}) => {
+export const CardBox = ({title, body, id, onClick, onRemove}) => {
 
   const navigate = useNavigate()
   
@@ -21,7 +21,7 @@ export const CardBox = ({title, body, id, onClick}) => {
     actions={[
       <EyeOutlined key="setting" onClick={onClick} />,
       <EditOutlined key="edit" onClick={()=> navigate("/detail_setting/" + id)} />,
-      <EllipsisOutlined key="ellipsis" />,
+      <DeleteOutlined onClick={onRemove}/>
     ]}
   >
     <Meta

@@ -1,0 +1,6 @@
+
+export const PROVIDER_TYPE = {
+    FILL_POSTS: "FILL_POSTS",
+    UPDATE_POST: "UPDATE_POST",
+    REMOVE_POST: "REMOVE_POST",
+}
