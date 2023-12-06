@@ -3,30 +3,79 @@ body {
   margin: 0;
 }
 
-.ant-card-meta-description{
+.ant-card-meta-description {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
 }
 
-.flex_box{
+.flex_box {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .flex_box .ant-image {
   width: 400px !important;
 }
 
-.ant-spin-dot i{
-   background-color: black !important;
+.ant-spin-dot i {
+  background-color: black !important;
 }
 
-.ant-flex{
+.ant-flex {
   margin-top: 100px;
   justify-content: center;
   align-items: center;
+}
+
+.bg-custom {
+  background-color: #00e4ea !important;
+}
+
+.bg-custom span{
+  color: white;
+}
+
+.bg-custom span:hover{
+  color: white !important;
+}
+
+.bg-custom:hover{
+  border-color: #00e4ea !important;
+}
+
+.header-custom {
+  padding: 10px 70px !important;
+  cursor: pointer;
+}
+
+.add-page-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.add-page-form h2 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.add-page-form label {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-page-form label input, .add-page-form label textarea {
+  margin-top: 10px;
+}
+
+.error-color{
+  color: red;
 }

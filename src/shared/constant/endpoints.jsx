@@ -1,5 +1,5 @@
 
 export const ENDPOINTS = {
-    POSTS: 'posts?_limit=10',
+    POSTS: 'posts',
     POST_ID:(id)=>  'posts/' +id ,
 }

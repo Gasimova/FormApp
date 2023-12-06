@@ -7,7 +7,7 @@ import { Header } from "../../shared/components/Header"
 import { Loading } from "../../shared/components/Loading"
 import { ModalBox } from "../../shared/components/ModalBox"
 import { useAxios } from "../../shared/hooks/useAxios"
-import { GlobalProvider, useGloablProvider } from "../../shared/store/globalProvider"
+import { useGloablProvider } from "../../shared/store/globalProvider"
 import { PROVIDER_TYPE } from "../../shared/store/type"
 
 export const Home = () => {
@@ -19,7 +19,10 @@ export const Home = () => {
     deletePosts(post.id).then(() => {
       setOpen(false);
       dispatch({ type: PROVIDER_TYPE.REMOVE_POST, payload: post.id })
-      openNotification('topRight')
+      notification.success({
+        message: '',
+        description: 'Post uğurla silindi'
+    });
     }).catch(() => console.log('error'))
   };
 
@@ -31,27 +34,14 @@ export const Home = () => {
 
   const { loading } = useAxios({
     dataFn: getPosts, onSuccess: (res) => {
-      dispatch({ type: PROVIDER_TYPE.FILL_POSTS, payload: res?.data })
+      dispatch({ type: PROVIDER_TYPE.FILL_POSTS, payload: res?.data.filter((dt)=>dt.id> 100) })
     }
   });
   const posts = useMemo(()=>state?.posts, [state?.posts]) 
-
   const navigate = useNavigate()
-
-  const [api, contextHolder] = notification.useNotification();
-
-  const openNotification = (placement) => {
-    api.info({
-      message: ``,
-      description: `Post uğurla silindi`,
-      placement,
-      type:"success"
-    });
-  };
 
   return (
     <>
-    {contextHolder}
       <Header />
       {
         loading ? <Loading /> :

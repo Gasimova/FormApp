@@ -12,12 +12,16 @@ const reducer = (state, action) => {
   switch (action.type) {
     case PROVIDER_TYPE.FILL_POSTS:
       return { ...state, posts: action.payload }
+
+    // case PROVIDER_TYPE.ADD_POSTS:
+
+    // const newPost = [...state.posts, action.payload]
+    //   return { ...state, posts:newPost }
+
     case PROVIDER_TYPE.REMOVE_POST:
 
-    console.log(action, 'action');
       const newState = state.posts.filter(post => post.id !== action.payload)
-      console.log({...state, newState}, 'state');
-      return {...state,posts: newState}
+      return { ...state, posts: newState }
 
     default:
       return state
