@@ -20,7 +20,7 @@ export const CardBox = ({title, body, id, onClick, onRemove}) => {
     
     actions={[
       <EyeOutlined key="setting" onClick={onClick} />,
-      <EditOutlined key="edit" onClick={()=> navigate("/detail_setting/" + id)} />,
+      <EditOutlined key="edit" onClick={()=> navigate("/edit/" + id)} />,
       <DeleteOutlined onClick={onRemove}/>
     ]}
   >

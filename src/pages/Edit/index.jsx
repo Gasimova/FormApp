@@ -4,38 +4,42 @@ import { useFormik } from 'formik'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Label } from 'reactstrap'
-import { addPosts } from '../../services/user'
-
+import { updatePosts } from '../../services/user'
 import { Header } from '../../shared/components/Header'
 import { Router } from '../../shared/constant/router'
 import { validateInputs } from '../../shared/constant/validates'
+import { useGloablProvider } from '../../shared/store/globalProvider'
 
 
-export const AddPost = () => {
+export const EditPost = () => {
+
+    const { state } = useGloablProvider()
+    const editData = {
+        title: state?.posts[0]?.title,
+        body: state?.posts[0]?.body,
+        id:state.posts[0].id
+    }
 
     const navigate = useNavigate()
     const formik = useFormik({
-        initialValues: {
-            title: "",
-            body: ""
-        },
+        initialValues: editData,
         validate:validateInputs,
         onSubmit: (values) => {
-            addPostFetch(values)
+            console.log(values, 'values');
+            editPostFetch(values.id,values)
             formik.handleReset()
         }
     })
 
     const disabled = !!Object.values(formik.errors).length
-
-    const addPostFetch = (data) => {
-        addPosts(data)
+    const editPostFetch = (id,data) => {
+        updatePosts(id,data)
         .then((res) => {
             console.log(res, 'res');
             navigate(Router.HOME)
             notification.success({
                 message: '',
-                description: 'Post uğurla əlavə edildi'
+                description: 'Post uğurla redaktə edildi'
             });
         }).catch((err)=>console.log(err, 'err'))
     }
